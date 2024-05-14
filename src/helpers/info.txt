@@ -1,0 +1,176 @@
+//contador
+
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+const NumeroAnimado = () => {
+  const [numero, setNumero] = useState(0);
+  const [animacionIniciada, setAnimacionIniciada] = useState(false);
+  const { ref, inView } = useInView();
+
+  if (inView && !animacionIniciada) {
+    // Si el componente es visible y la animación no ha comenzado, la iniciamos
+    setAnimacionIniciada(true);
+    const objetivo = 50;
+    const intervalo = 50; // Milisegundos entre incrementos
+    const incremento = 1; // Cantidad a incrementar cada vez
+    const temporizador = setInterval(() => {
+      setNumero(prevNumero => {
+        const nuevoNumero = prevNumero + incremento;
+        return nuevoNumero >= objetivo ? objetivo : nuevoNumero;
+      });
+    }, intervalo);
+
+    // Limpiar el temporizador cuando la animación se completa
+    setTimeout(() => clearInterval(temporizador), (objetivo - numero) * intervalo);
+  }
+
+  return (
+    <div ref={ref}>
+      <h2>Sección con animación</h2>
+      <div>El número actual es: {numero}</div>
+    </div>
+  );
+};
+
+export default NumeroAnimado;
+
+//redireccionamiento con dependencia
+
+// App.js
+import React from 'react';
+import Header from './Header';
+import Section from './Section'; // Suponiendo que tienes un componente Section para cada sección de tu página
+
+const App = () => {
+    return (
+        <div>
+            <Header />
+            <Section id="section1" />
+            <Section id="section2" />
+            <Section id="section3" />
+        </div>
+    );
+};
+
+export default App;
+
+/////
+
+import React from 'react';
+import { Link } from 'react-scroll';
+
+const Header = () => {
+    return (
+        <nav>
+            <ul>
+                <li><Link to="section1" smooth={true} duration={500}>Sección 1</Link></li>
+                <li><Link to="section2" smooth={true} duration={500}>Sección 2</Link></li>
+                <li><Link to="section3" smooth={true} duration={500}>Sección 3</Link></li>
+            </ul>
+        </nav>
+    );
+};
+
+export default Header;
+
+
+
+
+/***************************************************************************/
+React router
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Header = () => {
+    return (
+        <header>
+            <nav>
+                <ul>
+                    <li><Link to="/about">Acerca de</Link></li>
+                    {/* Otros enlaces del header */}
+                </ul>
+            </nav>
+        </header>
+    );
+};
+
+export default Header;
+
+//////////////////////////////////////////////
+
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './Header';
+import About from './About'; // Suponiendo que tienes un componente llamado About
+
+const App = () => {
+    return (
+        <Router>
+            <div>
+                <Header />
+                <Route path="/about" component={About} />
+                {/* Otras rutas de tu aplicación */}
+            </div>
+        </Router>
+    );
+};
+
+export default App;
+
+
+
+import { Link } from 'react-scroll';
+
+export const SectionPortComponent = () => {
+  const phoneNumber = '5491161023731';
+  const mensaje = 'Hola estoy interesado en los servicios del Trel!';
+
+  const handleClick = () => {
+    const url = `https://wa.me/${phoneNumber}${
+      mensaje ? `?text=${encodeURIComponent(mensaje)}` : ''
+    }`;
+    window.open(url, '_blank');
+  };
+
+  return (
+    <section
+      id='section1'
+      className='p-10 flex flex-col justify-evenly items-center md:items-start md:flex-row'
+    >
+      <div className='mt-20 flex flex-col gap-4'>
+        <div className='flex flex-col gap-5'>
+          <h1 className='text-3xl  md:text-5xl max-w-[1000px] text-custom-blue font-bold text-center md:text-left'>
+            Construye tu presencia en línea ahora!
+          </h1>
+          <h2 className='max-w-[700px] text-1xl md:text-2xl text-center md:text-left'>
+            Desde Trel estamos comprometidos con potenciar los emprendimientos
+            del ecosistema digital, de forma eficiente y dinámica
+          </h2>
+        </div>
+        <div className='flex justify-center md:justify-start '>
+          <div className='max-w-[300px] w-full'>
+            <Link to='section4' smooth={true} duration={500}>
+              <button className='p-3 rounded-full w-full bg-custom-blue text-custom-white hover:bg-custom-white hover:text-custom-black hover:border-2 transition-all font-bold md:p-5 shadow-custom-black '>
+                Get Started{' '}
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className='max-w-[300px]  md:max-w-lg w-full  '>
+        <img src='./Hombre.png' alt='' className='w-full relative top-10' />
+      </div>
+      <div
+        className='fixed cursor-pointer  max-w-16 md:max-w-20  bg-custom-green rounded-full bottom-[50px] right-[30px]'
+        onClick={handleClick}
+      >
+        <img
+          src='./whatsapp.png'
+          alt='whatsapp'
+          className='w-full hover:scale-50 transition-all'
+        />
+      </div>
+    </section>
+  );
+};
