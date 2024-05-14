@@ -81,9 +81,9 @@ export const SectionContactComponent = () => {
               state.name
             }${' '}
              ${state.text}`}
-            className='cursor-pointer bg-custom-green text-custom-blue p-5 rounded-3xl border-2 border-custom-blue font-bold shadow-custom-black text-center hover:bg-custom-green-sweet transition-all'
+            className='cursor-pointer bg-custom-blue text-custom-white p-5 border-2 border-custom-white rounded-3xl font-bold shadow-custom-black text-center hover:bg-custom-green-sweet transition-all'
           >
-            SEND🚀
+            Send Now🚀
           </a>
         </form>
 
