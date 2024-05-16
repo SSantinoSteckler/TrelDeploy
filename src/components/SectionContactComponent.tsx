@@ -77,7 +77,7 @@ export const SectionContactComponent = () => {
             </textarea>
           </div>
           <a
-            href={`mailto:tler@gmail.com?subject=Inquiry from Trel contact form&body=${
+            href={`mailto:trelagency@gmail.com?subject=Inquiry from Trel contact form&body=${
               state.name
             }${' '}
              ${state.text}`}

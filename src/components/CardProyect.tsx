@@ -24,7 +24,7 @@ export const CardProyect = ({ children }: { children: string }) => {
       <div
         className={
           value
-            ? 'block max-w-[90%] max-h-[70%] md:max-w-[60%] md:max-h-[80%] h-full w-full bg-custom-white absolute border-4 z-50'
+            ? 'block max-w-[90%] max-h-[200%] md:max-w-[60%] md:max-h-[80%] h-full w-full bg-custom-white absolute border-4 z-50 rounded-md'
             : 'hidden'
         }
       >

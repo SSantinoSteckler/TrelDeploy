@@ -23,21 +23,9 @@ export const SectionPortafolioComponent = () => {
             'https://6643acd60961471dfab510d4--dynamic-pie-156d5a.netlify.app/'
           }
         ></CardProyect>
-        <CardProyect
-          children={
-            'https://6643acd60961471dfab510d4--dynamic-pie-156d5a.netlify.app/'
-          }
-        ></CardProyect>
-        <CardProyect
-          children={
-            'https://6643acd60961471dfab510d4--dynamic-pie-156d5a.netlify.app/'
-          }
-        ></CardProyect>
-        <CardProyect
-          children={
-            'https://6643acd60961471dfab510d4--dynamic-pie-156d5a.netlify.app/'
-          }
-        ></CardProyect>
+        <CardProyect children={''}></CardProyect>
+        <CardProyect children={''}></CardProyect>
+        <CardProyect children={''}></CardProyect>
       </div>
     </section>
   );
